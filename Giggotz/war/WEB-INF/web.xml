@@ -51,7 +51,7 @@
  	<init-param>
  		<param-name>javax.ws.rs.Application</param-name>
  		<!-- aqui hay que poner la clase que implementara javax.ws.rs.Application -->
- 		<param-value></param-value>
+ 		<param-value>giggotz.api.GiggotzApplication</param-value>
  	</init-param>
   </servlet>
   
