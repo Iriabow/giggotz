@@ -4,11 +4,17 @@ import giggotz.client.rpc.spotify.SpotifyAsync;
 import giggotz.shared.spotify.Item;
 import giggotz.shared.spotify.SpotifyAlbums;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -57,7 +63,8 @@ public class SpotifyView extends Composite {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				mainPanel.add(new Label("Error en el método GetSpotifyTracks()" + caught.getMessage()));
+				mainPanel.add(new Label("Error en el método GetSpotifyTracks()"
+						+ caught.getMessage()));
 
 			}
 		});
@@ -68,34 +75,48 @@ public class SpotifyView extends Composite {
 	// }
 
 	private void showAlbums(String artista, SpotifyAlbums result) {
-//
-//		String output = "<fieldset>";
-//
-//		output += "<legend> Albums de " + artista
-//				+ " ¡Clica en uno para ir a su pagina de spotify! </legend>";
-		
+		//
+		// String output = "<fieldset>";
+		//
+		// output += "<legend> Albums de " + artista
+		// + " ¡Clica en uno para ir a su pagina de spotify! </legend>";
+
 		VerticalPanel mainArtists = new VerticalPanel();
-		Label label = new Label("¡Clica en los albumnes para ir a su página de Spotify!");
+		Label label = new Label(
+				"¡Clica en los albumnes para ir a su página de Spotify!");
 		mainArtists.add(label);
 		if (result != null) {
 
 			for (Item i : result.getAlbums().getItems()) {
+				final Item item = i;
 				Label artistLabel = new Label(i.getName());
+				artistLabel.sinkEvents(Event.ONCLICK);
+				artistLabel.addHandler(new ClickHandler() {
+
+					@Override
+					public void onClick(ClickEvent event) {
+						Window.open(
+								"https://open.spotify.com/album/"
+										+ item.getSplitUri(), "_blank", "");
+					}
+
+				}, ClickEvent.getType());
 				mainArtists.add(artistLabel);
 				mainPanel.add(mainArtists);
-//				output += getRefPrueba(i);
+				// output += getRefPrueba(i);
 			}
 		} else {
-			
-			mainArtists.add(new Label("No se han conseguido albumnes del artista."));
+
+			mainArtists.add(new Label(
+					"No se han conseguido albumnes del artista."));
 		}
-	
-//			output += "<span> No results </span>";
 
-//		output += "</fieldset>";
-//		HTML albums = new HTML(output);
+		// output += "<span> No results </span>";
 
-//		mainPanel.add(albums);
+		// output += "</fieldset>";
+		// HTML albums = new HTML(output);
+
+		// mainPanel.add(albums);
 	}
 
 	// private String getRef(Item album) {
