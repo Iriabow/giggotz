@@ -7,10 +7,7 @@ public class Gig {
 	private String ciudad; 
 	private Double precio;
 	
-	public Gig(String artista, String nombre, String ciudad) {
-		this.artista = artista;
-		this.nombre = nombre;
-		this.ciudad = ciudad;
+	public Gig() {
 	}
 	
 	public String getArtista() {

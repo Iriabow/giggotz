@@ -5,9 +5,7 @@ public class Album {
 	private String artista;
 	private String nombre;
 	
-	public Album(String artista, String nombre) {
-		this.artista = artista;
-		this.nombre = nombre;
+	public Album() {
 	}
 	
 	public String getArtista() {
