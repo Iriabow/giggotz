@@ -212,26 +212,9 @@ public class LectorJson {
 			char u=objeto.charAt(w);
 			//Character.isAlphabetic(u) || u==(' ') || u==('/') || u==('/') || u==('/')
 			if(u!=('"')){
-				if(u=='�'){
-				    objeto2=objeto2+"xzn";	
-				}else if(u=='�'){
-					objeto2=objeto2+"xza";
 				
-				}else if(u=='�'){
-					objeto2=objeto2+"xze";
-				
-				}else if(u=='�'){
-					objeto2=objeto2+"xzi";
-				
-				}else if(u=='�'){
-					objeto2=objeto2+"xzo";
-				
-				}else if(u=='�'){
-					objeto2=objeto2+"xzu";
-				}
-				else{
 				objeto2=objeto2+u;
-				}
+				
 			}
 	     }
 	
