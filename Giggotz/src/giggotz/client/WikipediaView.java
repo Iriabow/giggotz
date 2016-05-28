@@ -6,12 +6,10 @@ import giggotz.client.rpc.wikipedia.WikipediaServiceAsync;
 import java.util.Map;
 
 import com.google.gwt.core.shared.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
 
 
@@ -25,9 +23,9 @@ public class WikipediaView extends Composite {
 
 		initWidget(main);
 
-		//final Button buscar = new Button("Buscar"); //boton que busca información por artista
+		//final Button buscar = new Button("Buscar"); //boton que busca informaciï¿½n por artista
 		final String artista = params.get("artista").toString(); 
-		final TextArea texto = new TextArea();
+		final Label texto = new Label();
 		final TextArea error = new TextArea();
 		
 		//main.add(buscar);
@@ -39,12 +37,14 @@ public class WikipediaView extends Composite {
 						new AsyncCallback<String>() {
 
 							public void onSuccess(String result) {
-								texto.setValue(result);
+//								texto.setValue(result);
+								texto.setText(result);
 								main.add(texto);
 							}
 
 							public void onFailure(Throwable caught) {
-								error.setText("Todavía estamos trabajando en ello");
+								System.out.println(artista);
+								error.setText("TodavÃ­a estamos trabajando en ello");
 								main.add(error);
 							}
 

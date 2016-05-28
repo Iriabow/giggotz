@@ -25,6 +25,16 @@
   </servlet-mapping>
   
   <servlet>
+    <servlet-name>WikiServlet</servlet-name>
+    <servlet-class>giggotz.server.rpc.wikipedia.WikipediaServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>WikiServlet</servlet-name>
+    <url-pattern>/giggotz/wikipedia</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   	<servlet-name>Resteasy</servlet-name>
   	<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
  	<init-param>
