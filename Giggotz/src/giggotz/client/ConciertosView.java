@@ -29,6 +29,7 @@ import java.util.Map;
 
 
 
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -40,6 +41,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DecoratorPanel;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
@@ -160,6 +162,18 @@ public class ConciertosView extends Composite{
 				conjunto4Conciertos.setSpacing(5);
 				
 		}
+		
+		Button inicio=new Button("Hacer otra busqueda.");
+		inicio.setWidth("400px");
+		inicio.setStyleName("inicioTexto");
+		inicio.getElement().getStyle().setBackgroundColor("#7fff66");
+		inicio.addClickHandler(new ClickHandler(){
+		    	public void onClick(ClickEvent click){
+		    		Giggotz.go("init",new HashMap<String,Object>());
+		    	}
+		    });
+		panel.add(inicio);
+		panel.setCellHorizontalAlignment(inicio, HasHorizontalAlignment.ALIGN_CENTER);
 		panel.add(conjunto4Conciertos);
 		panel.setSpacing(10);
 		//getPanelIndices(nPaginas,conciertos,conjunto4Conciertos);
@@ -332,6 +346,7 @@ public class ConciertosView extends Composite{
 	}
 	private String ponAcentos(String s){
 		//String k="";
+		/*
 		String conAcento="";
 		Boolean codigoXZ=false;
 		for(int w=0;w<s.length();w++){
@@ -373,9 +388,9 @@ public class ConciertosView extends Composite{
 			}
 				
 		}
-		
+		*/
 			
-		return conAcento;	
+		return s;	
 	}
 	
 }
