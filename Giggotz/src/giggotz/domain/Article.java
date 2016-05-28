@@ -5,8 +5,7 @@ public class Article {
 	private String artista;
 	private String contenido;
 	
-	public Article(String artista) {
-		this.artista = artista;
+	public Article() {
 	}
 	
 	public String getArtista() {
