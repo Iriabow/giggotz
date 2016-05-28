@@ -9,8 +9,9 @@ import java.util.Map;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class SpotifyView extends Composite {
 
@@ -34,7 +35,7 @@ public class SpotifyView extends Composite {
 		// mainPanel.add(statusLabel);
 
 		// RootPanel.get("form").add(mainPanel);
-		final String artista = params.toString();
+		final String artista = params.get("artista").toString();
 		// buscar.addClickHandler(new ClickHandler() {
 		//
 		// @Override
@@ -56,7 +57,7 @@ public class SpotifyView extends Composite {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
+				mainPanel.add(new Label("Error en el método GetSpotifyTracks()" + caught.getMessage()));
 
 			}
 		});
@@ -67,24 +68,34 @@ public class SpotifyView extends Composite {
 	// }
 
 	private void showAlbums(String artista, SpotifyAlbums result) {
-
-		String output = "<fieldset>";
-
-		output += "<legend> Albums de " + artista
-				+ " ¡Clica en uno para ir a su pagina de spotify! </legend>";
-
+//
+//		String output = "<fieldset>";
+//
+//		output += "<legend> Albums de " + artista
+//				+ " ¡Clica en uno para ir a su pagina de spotify! </legend>";
+		
+		VerticalPanel mainArtists = new VerticalPanel();
+		Label label = new Label("¡Clica en los albumnes para ir a su página de Spotify!");
+		mainArtists.add(label);
 		if (result != null) {
 
 			for (Item i : result.getAlbums().getItems()) {
-				output += getRefPrueba(i);
+				Label artistLabel = new Label(i.getName());
+				mainArtists.add(artistLabel);
+				mainPanel.add(mainArtists);
+//				output += getRefPrueba(i);
 			}
-		} else
-			output += "<span> No results </span>";
+		} else {
+			
+			mainArtists.add(new Label("No se han conseguido albumnes del artista."));
+		}
+	
+//			output += "<span> No results </span>";
 
-		output += "</fieldset>";
-		HTML albums = new HTML(output);
+//		output += "</fieldset>";
+//		HTML albums = new HTML(output);
 
-		mainPanel.add(albums);
+//		mainPanel.add(albums);
 	}
 
 	// private String getRef(Item album) {
