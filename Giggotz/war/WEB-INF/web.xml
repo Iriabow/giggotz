@@ -34,7 +34,8 @@
     <url-pattern>/giggotz/wikipedia</url-pattern>
   </servlet-mapping>
   
-  <servlet-name>contactServlet</servlet-name>
+ 	<servlet>
+    <servlet-name>contactServlet</servlet-name>
 		<servlet-class>giggotz.server.rpc.spotify.SpotifyImpl</servlet-class>
 	</servlet>
 
@@ -42,10 +43,8 @@
 		<servlet-name>contactServlet</servlet-name>
 		<url-pattern>/giggotz/spotify</url-pattern>
 	</servlet-mapping>
-
-
-
-
+  
+  
   <servlet>
   	<servlet-name>Resteasy</servlet-name>
   	<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
