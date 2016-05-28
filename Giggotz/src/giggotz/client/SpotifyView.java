@@ -1,78 +1,77 @@
 package giggotz.client;
 
 import giggotz.client.rpc.spotify.SpotifyAsync;
-import giggotz.shared.spotify.ExternalUrls;
 import giggotz.shared.spotify.Item;
 import giggotz.shared.spotify.SpotifyAlbums;
 
-import com.google.gwt.core.client.EntryPoint;
+import java.util.Map;
+
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.TextBox;
 
-public class SpotifyView implements EntryPoint {
+public class SpotifyView extends Composite {
 
-	
-	final Button buscar = new Button("buscar");
-	final TextBox caja = new TextBox();
+	// final Button buscar = new Button("buscar");
+	// final TextBox caja = new TextBox();
 	HorizontalPanel mainPanel = new HorizontalPanel();
-	final Label statusLabel = new Label();
+	// final Label statusLabel = new Label();
 
-	final SpotifyAsync Spotify = GWT.create(giggotz.client.rpc.spotify.Spotify.class);
+	final SpotifyAsync Spotify = GWT
+			.create(giggotz.client.rpc.spotify.Spotify.class);
 
-	public void onModuleLoad() {
-		caja.setText("Artista");
+	// public void onModuleLoad()
 
-		mainPanel.add(caja);
-		mainPanel.add(buscar);
-		mainPanel.add(statusLabel);
+	public SpotifyView(Map<String, Object> params) {
 
-		RootPanel.get("form").add(mainPanel);
+		initWidget(mainPanel);
+		// caja.setText("Artista");
 
-		buscar.addClickHandler(new ClickHandler() {
+		// mainPanel.add(caja);
+		// mainPanel.add(buscar);
+		// mainPanel.add(statusLabel);
+
+		// RootPanel.get("form").add(mainPanel);
+		final String artista = params.toString();
+		// buscar.addClickHandler(new ClickHandler() {
+		//
+		// @Override
+		// public void onClick(ClickEvent event) {
+		// statusLabel.setText("buscando...");
+		//
+		// final String artista = caja.getText();
+		//
+		// RootPanel.get("spotify").clear();
+
+		Spotify.getSpotifyTracks(artista, new AsyncCallback<SpotifyAlbums>() {
 
 			@Override
-			public void onClick(ClickEvent event) {
-				statusLabel.setText("buscando...");
+			public void onSuccess(SpotifyAlbums result) {
 
-				final String artista = caja.getText();
+				showAlbums(artista, result);
+				// statusLabel.setText("");
+			}
 
-				RootPanel.get("spotify").clear();
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
 
-				Spotify.getSpotifyTracks(artista,
-						new AsyncCallback<SpotifyAlbums>() {
-
-							@Override
-							public void onSuccess(SpotifyAlbums result) {
-
-								showAlbums(artista, result);
-								statusLabel.setText("");
-							}
-
-							@Override
-							public void onFailure(Throwable caught) {
-								// TODO Auto-generated method stub
-
-							}
-						});
 			}
 		});
-
 	}
+
+	// });
+
+	// }
 
 	private void showAlbums(String artista, SpotifyAlbums result) {
 
 		String output = "<fieldset>";
 
 		output += "<legend> Albums de " + artista
-				+ " ¡Clica en uno para ir a su pagina de spotify! </legend>";
+				+ " Â¡Clica en uno para ir a su pagina de spotify! </legend>";
 
 		if (result != null) {
 
@@ -85,7 +84,7 @@ public class SpotifyView implements EntryPoint {
 		output += "</fieldset>";
 		HTML albums = new HTML(output);
 
-		RootPanel.get("spotify").add(albums);
+		mainPanel.add(albums);
 	}
 
 	// private String getRef(Item album) {
