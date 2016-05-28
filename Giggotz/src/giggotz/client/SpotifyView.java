@@ -19,17 +19,16 @@ import com.google.gwt.user.client.ui.TextBox;
 
 public class SpotifyView implements EntryPoint {
 
-	
 	final Button buscar = new Button("buscar");
 	final TextBox caja = new TextBox();
 	HorizontalPanel mainPanel = new HorizontalPanel();
 	final Label statusLabel = new Label();
 
-	final SpotifyAsync Spotify = GWT.create(giggotz.client.rpc.spotify.Spotify.class);
+	final SpotifyAsync Spotify = GWT
+			.create(giggotz.client.rpc.spotify.Spotify.class);
 
 	public void onModuleLoad() {
 		caja.setText("Artista");
-
 		mainPanel.add(caja);
 		mainPanel.add(buscar);
 		mainPanel.add(statusLabel);
