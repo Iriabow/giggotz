@@ -1,0 +1,2 @@
+serviceClass: giggotz.client.rpc.wikipedia.WikipediaService
+path: 9C2C681AA2A539BA925299195F41D079.gwt.rpc
