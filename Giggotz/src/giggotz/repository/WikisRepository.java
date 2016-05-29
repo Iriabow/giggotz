@@ -3,12 +3,31 @@ package giggotz.repository;
 import giggotz.domain.Article;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
-public interface WikisRepository {
+public class WikisRepository{
 
-	public Collection<Article> getAll();
-	public Article addArticle(String artista);
-	public void put(Article a);
-	public Article getArticle(String artista);
+	Map<String,Article> articleMap;
 	
+	public WikisRepository(){
+		articleMap = new HashMap<String, Article>();
+	}
+	
+
+	public Collection<Article> getAll() {
+		return articleMap.values();
+	}
+
+	
+	public void put(Article a) {
+		articleMap.put(a.getArtista(), a);
+		
+	}
+
+	
+	public Article getArticle(String artista) {
+		return articleMap.get(artista);
+	}
+
 }

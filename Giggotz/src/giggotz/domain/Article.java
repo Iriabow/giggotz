@@ -1,11 +1,18 @@
 package giggotz.domain;
 
+import javax.persistence.Id;
+
 public class Article {
-	
+	@Id
 	private String artista;
 	private String contenido;
 	
-	public Article() {
+	public Article(String artista,String contenido) {
+		this.artista=artista;
+		this.contenido=contenido;
+	}
+	public Article(){
+		
 	}
 	
 	public String getArtista() {
