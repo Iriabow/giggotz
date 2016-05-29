@@ -35,7 +35,7 @@ import com.google.gwt.user.client.ui.Widget;
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class Giggotz implements EntryPoint {
-	private static boolean unionViewCreada=false;
+	private static boolean unionViewCreada;
 	public static Panel p=RootPanel.get();
 	private static HorizontalPanel horizontalP;
 	

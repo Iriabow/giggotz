@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class UnionView extends Composite{
 
-	private static VerticalPanel panel=new VerticalPanel();
+	private static VerticalPanel panel;
 
 	public UnionView(Map<String,Object> params){
 		panel=new VerticalPanel();
