@@ -26,7 +26,7 @@ public class WikipediaView extends Composite {
 		//final Button buscar = new Button("Buscar"); //boton que busca informaci�n por artista
 		final String artista = params.get("artista").toString(); 
 		final Label texto = new Label();
-		final TextArea error = new TextArea();
+		final Label error = new Label();
 		
 		//main.add(buscar);
 
@@ -44,7 +44,7 @@ public class WikipediaView extends Composite {
 
 							public void onFailure(Throwable caught) {
 								System.out.println(artista);
-								error.setText("Todavía estamos trabajando en ello");
+								error.setText("Artista no encontrado.");
 								main.add(error);
 							}
 

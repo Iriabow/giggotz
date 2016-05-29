@@ -22,8 +22,9 @@ public class UnionView extends Composite{
 		//hPanelPrincipal.add(foto);
 		hPanelPrincipal.add(new WikipediaView(params));
 		panel.add(new SpotifyView(params));
+		panel.setSpacing(10);
 		decPanel.add(hPanelPrincipal);
-		decPanel.setWidth("500px");
+		decPanel.setWidth("525px");
 		
 		
 		panel.add(decPanel);

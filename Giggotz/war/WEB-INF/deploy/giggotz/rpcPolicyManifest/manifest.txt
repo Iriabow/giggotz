@@ -1,5 +1,5 @@
 # Module giggotz
 # RPC service class, partial path of RPC policy file
 giggotz.client.rpc.nvivo.GigService, 6C19A3252C0247B2AFEF208FEB993C24.gwt.rpc
-giggotz.client.rpc.spotify.Spotify, 5CBA9C729F7F282C60D05773CF498DE6.gwt.rpc
+giggotz.client.rpc.spotify.Spotify, EA29182968212D4FB8FE74CA518A3EF6.gwt.rpc
 giggotz.client.rpc.wikipedia.WikipediaService, 9C2C681AA2A539BA925299195F41D079.gwt.rpc
