@@ -1,6 +1,7 @@
 package giggotz.api;
 
 import giggotz.api.resources.AlbumsResource;
+import giggotz.api.resources.GigsResource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +15,7 @@ public class GiggotzApplication extends Application{
 	public GiggotzApplication() {
 	singletons.add(AlbumsResource.getInstance());
 //	singletons.add(WikisResource.getInstance());
-//	singletons.add(GigsResource.getInstance());
+	singletons.add(GigsResource.getInstance());
 	}
 	public Set<Class<?>> getClasses() {
 	return classes;
