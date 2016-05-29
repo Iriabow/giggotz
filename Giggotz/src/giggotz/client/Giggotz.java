@@ -35,7 +35,7 @@ import com.google.gwt.user.client.ui.Widget;
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class Giggotz implements EntryPoint {
-	private static boolean unionViewCreada=false;
+	private static boolean unionViewCreada;
 	public static Panel p=RootPanel.get();
 	private static HorizontalPanel horizontalP;
 	
@@ -48,6 +48,8 @@ public class Giggotz implements EntryPoint {
 		
 		//Panel p2=RootLayoutPanel.get();
 		if(token.equals("init")){
+			unionViewCreada=false;
+			p.clear();
 			p.add(new PaginaPrincipalView(params));
 			//p2.add(new PaginaPrincipalView(params));
 		}
@@ -59,8 +61,8 @@ public class Giggotz implements EntryPoint {
 		
 		}
 		if(token.equals("spotifyWikipedia")){
-			//creamos un boolean para resolver el conflicto de la primera vez necesitar añadir la vista
-			//y el resto que clicamos un concierto borrar y volver a añadir la vista
+			//creamos un boolean para resolver el conflicto de la primera vez necesitar aï¿½adir la vista
+			//y el resto que clicamos un concierto borrar y volver a aï¿½adir la vista
 			//ahora nos vamos a unionView
 			if(!unionViewCreada){
 			horizontalP.add(new UnionView(params));

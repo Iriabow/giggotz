@@ -41,11 +41,11 @@ public class AlbumsResource {
 		b.setArtista("Godofredo II");
 		b.setNombre("Seguimos con los Huevos");
 		Album c = new Album();
-		c.setArtista("Guan Manch");
+		c.setArtista("Guanmanch");
 		c.setNombre("Por un Mundo más Percutido");
-		repository.putAlbums("a", a);
-		repository.putAlbums("b", b);
-		repository.putAlbums("c", c);
+		repository.putAlbums(a.getArtista(), a);
+		repository.putAlbums(b.getArtista(), b);
+		repository.putAlbums(c.getArtista(), c);
 	}
 	
 	@GET
@@ -61,7 +61,7 @@ public class AlbumsResource {
 		Album alb = repository.getAlbum(artista);
 		
 		if(alb == null) {
-			throw new NotFoundException("El álbum "+ alb +" no ha sido encontrado");	
+			throw new NotFoundException("404 El álbum del artista"+artista+",no ha sido encontrado");	
 		}
 		return alb;
 	}
