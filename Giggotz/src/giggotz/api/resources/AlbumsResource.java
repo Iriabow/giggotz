@@ -2,7 +2,7 @@ package giggotz.api.resources;
 
 import giggotz.domain.Album;
 import giggotz.repository.AlbumsRepository;
-import giggotz.repository.AlbumsRepositoryImpl;
+import giggotz.repository.AlbumsRepository;
 
 import java.util.Collection;
 
@@ -15,14 +15,14 @@ import org.jboss.resteasy.spi.NotFoundException;
 
 
 
-@Path("/artistAlbums")
+@Path("/albums")
 public class AlbumsResource {
 
 	private static AlbumsResource _instance = null;
 	AlbumsRepository repository;
 	
 	private AlbumsResource() {
-		repository = new AlbumsRepositoryImpl();
+		repository = new AlbumsRepository();
 		initialize();
 	}
 	
@@ -35,25 +35,28 @@ public class AlbumsResource {
 	private void initialize() {
 		//TODO Aquí van los datos del repositorio, hay que rellenarlo
 		Album a = new Album();
-		a.setArtista("a");
-		a.setNombre("b");
+		a.setArtista("Godofredo");
+		a.setNombre("Friendo Huevos Fritos");
 		Album b = new Album();
-		b.setArtista("c");
-		b.setNombre("d");
+		b.setArtista("Godofredo II");
+		b.setNombre("Seguimos con los Huevos");
 		Album c = new Album();
-		c.setArtista("e");
-		c.setNombre("f");
+		c.setArtista("Guan Manch");
+		c.setNombre("Por un Mundo más Percutido");
+		repository.putAlbums("a", a);
+		repository.putAlbums("b", b);
+		repository.putAlbums("c", c);
 	}
 	
 	@GET
-	@Produces("aplication/json")
+	@Produces("application/json")
 	public Collection<Album> getAll() {
 		return repository.getAll();
 	}
 	
 	@GET
 	@Path("/{artistName}")
-	@Produces("aplication/json")
+	@Produces("application/json")
 	public Album getAlbum(@PathParam ("artistName") String artista) {
 		Album alb = repository.getAlbum(artista);
 		

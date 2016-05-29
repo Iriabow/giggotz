@@ -1,10 +1,12 @@
 package giggotz.domain;
 
-public class Album {
+import javax.persistence.Id;
 
+public class Album {
+	@Id
 	private String artista;
 	private String nombre;
-	
+
 	public Album() {
 	}
 	
