@@ -1,10 +1,14 @@
 package giggotz.api.resources;
 
 import java.net.URI;
+import java.util.Collection;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
@@ -13,6 +17,7 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
 import org.jboss.resteasy.spi.BadRequestException;
+import org.jboss.resteasy.spi.NotFoundException;
 
 import giggotz.domain.Album;
 import giggotz.domain.Article;
@@ -55,17 +60,43 @@ public class WikisResource {
 	
 	@POST
 	@Consumes("application/json")
-	@Produces("application/json")
-	public Response addArticle(@Context UriInfo uriInfo,Article a){
-		if(a.getArtista() == null || "".equals(a.getArtista())){
-			throw new BadRequestException("The name of the playlist must not be null");
-		}
-		repository.put(a);
-		UriBuilder ub = uriInfo.getAbsolutePathBuilder().path(this.getClass(), "get");
-		URI uri = ub.build(a.getArtista());
-		ResponseBuilder resp = Response.created(uri);
-		resp.entity(a);			
-		return resp.build();
+	public Article addPlaylist( Article article) {
+		repository.put(article);
+		
+		return article;
 	}
+	@GET
+	@Produces("application/json")
+	public Collection<Article> getAll() {
+		return repository.getAll();
+	}
+	
+	@GET
+	@Path("/{artistName}")
+	@Produces("application/json")
+	public Article getArticulo(@PathParam ("artistName") String artista) {
+		Article articulo = repository.getArticle(artista);
+		
+		if(articulo == null) {
+			throw new NotFoundException("404 El articulo "+artista+",no ha sido encontrado");	
+		}
+		return articulo;
+	}
+	
+	@PUT
+	@Consumes("application/json")
+	public Response updateAplication(Article article) {
+	
+		if (repository.getArticle(article.getArtista())==null) {
+			throw new NotFoundException("The article was not found");			
+		}
+		
+		
+		
+		repository.put(article);
+		
+		return Response.noContent().build();
+	}
+	
 	
 }
