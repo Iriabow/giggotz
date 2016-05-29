@@ -1,0 +1,2 @@
+serviceClass: giggotz.client.rpc.spotify.Spotify
+path: EA29182968212D4FB8FE74CA518A3EF6.gwt.rpc
