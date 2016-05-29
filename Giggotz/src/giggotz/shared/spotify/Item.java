@@ -21,7 +21,7 @@ public class Item implements Serializable {
 	private ExternalUrls external_urls;
 	private String href;
 	private String id;
-	private List<Image> images = new ArrayList<Image>();
+	private List<ImagenSpotify> images = new ArrayList<ImagenSpotify>();
 	private String name;
 	private String type;
 	private String uri;
@@ -122,7 +122,7 @@ public class Item implements Serializable {
 	 * 
 	 * @return The images
 	 */
-	public List<Image> getImages() {
+	public List<ImagenSpotify> getImages() {
 		return images;
 	}
 
@@ -131,7 +131,7 @@ public class Item implements Serializable {
 	 * @param images
 	 *            The images
 	 */
-	public void setImages(List<Image> images) {
+	public void setImages(List<ImagenSpotify> images) {
 		this.images = images;
 	}
 

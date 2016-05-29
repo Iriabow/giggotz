@@ -12,7 +12,7 @@ public class UnionView extends Composite{
 	private static VerticalPanel panel=new VerticalPanel();
 
 	public UnionView(Map<String,Object> params){
-	
+		panel=new VerticalPanel();
 		initWidget(panel);
 		//panel.setStyleName("unionView");
 
@@ -22,8 +22,9 @@ public class UnionView extends Composite{
 		//hPanelPrincipal.add(foto);
 		hPanelPrincipal.add(new WikipediaView(params));
 		panel.add(new SpotifyView(params));
+		panel.setSpacing(10);
 		decPanel.add(hPanelPrincipal);
-		decPanel.setWidth("500px");
+		decPanel.setWidth("525px");
 		
 		
 		panel.add(decPanel);
