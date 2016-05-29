@@ -2,6 +2,7 @@ package giggotz.api;
 
 import giggotz.api.resources.AlbumsResource;
 import giggotz.api.resources.GigsResource;
+import giggotz.api.resources.WikisResource;
 
 import java.util.HashSet;
 import java.util.Set;
